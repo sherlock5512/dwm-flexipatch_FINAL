@@ -9,15 +9,7 @@ draw_awesomebar(Bar *bar, BarArg *a)
 {
 	int n = 0, scm, remainder = 0, tabw, pad;
 	unsigned int i;
-	#if BAR_TITLE_LEFT_PAD && BAR_TITLE_RIGHT_PAD
 	int x = a->x + lrpad / 2, w = a->w - lrpad;
-	#elif BAR_TITLE_LEFT_PAD
-	int x = a->x + lrpad / 2, w = a->w - lrpad / 2;
-	#elif BAR_TITLE_RIGHT_PAD
-	int x = a->x, w = a->w - lrpad / 2;
-	#else
-	int x = a->x, w = a->w;
-	#endif // BAR_TITLE_LEFT_PAD | BAR_TITLE_RIGHT_PAD
 
 	Client *c;
 	for (c = bar->mon->clients; c; c = c->next)
@@ -38,10 +30,6 @@ draw_awesomebar(Bar *bar, BarArg *a)
 				scm = SchemeTitleNorm;
 
 			pad = lrpad / 2;
-			#if BAR_CENTEREDWINDOWNAME_PATCH
-			if (TEXTW(c->name) < tabw)
-				pad = (tabw - TEXTW(c->name) + lrpad) / 2;
-			#endif // BAR_CENTEREDWINDOWNAME_PATCH
 
 			drw_setscheme(drw, scheme[scm]);
 			drw_text(drw, x, a->y, tabw + (i < remainder ? 1 : 0), a->h, pad, c->name, 0, False);

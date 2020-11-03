@@ -1,5 +1,12 @@
 dwm - dynamic window manager
 ============================
+
+My fork of bakkeby/dwm-flexipatch configured with the patches that i use and then finalised.
+this is what i use on my laptop.
+just have this here so I can easily use it in other places when i need to.
+
+
+
 dwm is an extremely fast, small, and dynamic window manager for X.
 
 
